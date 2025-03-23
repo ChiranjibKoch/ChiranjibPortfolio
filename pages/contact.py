@@ -63,7 +63,7 @@ with col1:
         st.markdown("""
         **Email:** chiranjib.koch@example.com
         
-        **Phone:** +91 98765 43210
+        **Phone:** +91123
         
         **Location:** New Delhi, India
         """)
