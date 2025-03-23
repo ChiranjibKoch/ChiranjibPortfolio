@@ -1,0 +1,654 @@
+/* Import SF Pro Font */
+@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+
+/* Global Styles */
+body {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-image: url('assets/background.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-color: #f8f9fa; /* Fallback color */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    scroll-behavior: smooth;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Enhanced Animated Cursor */
+body {
+    cursor: none; /* Hide default cursor */
+}
+
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(0, 102, 204, 0.3);
+    pointer-events: none;
+    mix-blend-mode: difference;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease;
+}
+
+.custom-cursor.active {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 102, 204, 0.1);
+}
+
+.custom-cursor-follower {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #0066cc;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    transition: transform 0.12s ease;
+}
+
+/* Lightning Nav Sidebar */
+.sidebar {
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-right: 1px solid #0f3460;
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 0 20px rgba(0, 102, 204, 0.3);
+    overflow: hidden;
+}
+
+.sidebar::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right, 
+        transparent 0%, 
+        transparent 40%, 
+        rgba(0, 102, 204, 0.1) 50%, 
+        transparent 60%, 
+        transparent 100%
+    );
+    transform: rotate(30deg);
+    animation: lightningEffect 8s infinite linear;
+    z-index: -1;
+}
+
+@keyframes lightningEffect {
+    0% {
+        transform: translateY(-100%) rotate(30deg);
+    }
+    100% {
+        transform: translateY(100%) rotate(30deg);
+    }
+}
+
+.sidebar h2 {
+    color: #4cc9f0;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 10px rgba(76, 201, 240, 0.5);
+    animation: pulseText 3s infinite;
+}
+
+@keyframes pulseText {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(76, 201, 240, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(76, 201, 240, 0.8), 0 0 30px rgba(76, 201, 240, 0.4);
+    }
+}
+
+.sidebar .nav-link {
+    color: #e2e2e2;
+    border-radius: 5px;
+    margin-bottom: 0.8rem;
+    padding: 10px 15px;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    background: rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.sidebar .nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.sidebar .nav-link:hover::before {
+    left: 100%;
+}
+
+.sidebar .nav-link:hover, .sidebar .nav-link.active {
+    background: rgba(0, 102, 204, 0.3);
+    color: #4cc9f0;
+    transform: translateX(5px);
+    box-shadow: 0 0 15px rgba(76, 201, 240, 0.5);
+}
+
+.lightning-flash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(76, 201, 240, 0.5);
+    z-index: -1;
+    animation: flash 0.3s forwards;
+}
+
+@keyframes flash {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+.resume-section {
+    margin: 1.5rem 0;
+}
+
+.resume-section .btn {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0066cc, #4cc9f0);
+    border: none;
+    color: white;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.resume-section .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: linear-gradient(135deg, #4cc9f0, #0066cc);
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+.resume-section .btn:hover::before {
+    height: 100%;
+}
+
+.resume-section .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 15px rgba(0, 102, 204, 0.4);
+}
+
+.copyright {
+    font-size: 0.8rem;
+    color: #4cc9f0;
+    text-shadow: 0 0 5px rgba(76, 201, 240, 0.3);
+    margin-top: 2rem;
+}
+
+/* Main Content */
+.main-content {
+    padding: 2rem;
+    position: relative;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    margin: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Hand Cursor Scroll Indicator */
+.scroll-hand {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+}
+
+.scroll-hand.visible {
+    opacity: 1;
+}
+
+.scroll-hand.down {
+    transform: rotate(0deg);
+}
+
+.scroll-hand.up {
+    transform: rotate(180deg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #333;
+    margin-bottom: 1rem;
+    position: relative;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    letter-spacing: -0.02em; /* SF Pro's distinctive letter spacing */
+}
+
+h1 {
+    color: #0066cc;
+    font-weight: 600;
+    overflow: hidden;
+    font-size: 2.5rem;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #0066cc, #4cc9f0);
+    animation: heading-underline 2s forwards ease-in-out;
+}
+
+@keyframes heading-underline {
+    to { width: 100px; }
+}
+
+section {
+    margin-bottom: 2rem;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+section.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+/* Animated Cards with Hover Effects */
+.card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: white;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 102, 204, 0.2);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(76, 201, 240, 0.1) 0%, rgba(0, 102, 204, 0.1) 100%);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.4s ease;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 50%;
+    height: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 80%);
+    opacity: 0;
+    mix-blend-mode: overlay;
+    transition: all 0.6s ease;
+}
+
+.card:hover::after {
+    top: -20%;
+    left: -20%;
+    opacity: 0.8;
+}
+
+/* Skills with Animated Progress Bars */
+.skill-item, .domain-item {
+    margin-bottom: 1.2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-name, .domain-name {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.skill-item:hover .skill-name, 
+.domain-item:hover .domain-name {
+    transform: translateX(5px);
+    color: #0066cc;
+}
+
+.progress {
+    height: 12px;
+    border-radius: 6px;
+    background: rgba(233, 236, 239, 0.5);
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    background-image: linear-gradient(
+        45deg, 
+        rgba(255, 255, 255, 0.15) 25%, 
+        transparent 25%, 
+        transparent 50%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        rgba(255, 255, 255, 0.15) 75%, 
+        transparent 75%
+    );
+    background-size: 1rem 1rem;
+    animation: progress-animation 2s linear infinite, 
+               progress-fill 1.5s ease-out forwards;
+    transform-origin: left;
+    transform: scaleX(0);
+}
+
+@keyframes progress-animation {
+    0% {
+        background-position: 1rem 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+@keyframes progress-fill {
+    0% {
+        transform: scaleX(0);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+.timeline-item {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-left: 3px solid #0066cc;
+    background: white;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-item h4 {
+    color: #0066cc;
+}
+
+/* Blog */
+.blog-post {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+.post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* Tabs */
+.nav-tabs .nav-link {
+    color: #495057;
+}
+
+.nav-tabs .nav-link.active {
+    color: #0066cc;
+    font-weight: 500;
+}
+
+/* Contact Form */
+form label {
+    font-weight: 500;
+}
+
+.btn-primary {
+    background-color: #0066cc;
+    border-color: transparent;
+    border-radius: 8px;
+    padding: 0.5rem 1.25rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 102, 204, 0.1);
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 102, 204, 0.2);
+}
+
+.btn-primary:active {
+    transform: translateY(1px);
+}
+
+/* Projects */
+.filter-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        min-height: auto;
+        position: relative;
+    }
+    
+    .post-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* Advanced Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes flipInX {
+    from {
+        transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+        animation-timing-function: ease-in;
+        opacity: 0;
+    }
+    40% {
+        transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+        animation-timing-function: ease-in;
+    }
+    60% {
+        transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+        opacity: 1;
+    }
+    80% {
+        transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    }
+    to {
+        transform: perspective(400px);
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 102, 204, 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(0, 102, 204, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 102, 204, 0);
+    }
+}
+
+@keyframes shine {
+    from {
+        background-position: -200% 0;
+    }
+    to {
+        background-position: 200% 0;
+    }
+}
+
+/* Apply animations */
+section {
+    animation: fadeIn 0.5s ease-in-out;
+    backface-visibility: hidden;
+}
+
+.card h3 {
+    animation: float 6s ease-in-out infinite;
+}
+
+.btn:active {
+    animation: pulse 0.5s ease-out;
+}
+
+/* Hand Gesture Animation */
+.hand-gesture {
+    position: fixed;
+    width: 60px;
+    height: 80px;
+    right: 40px;
+    z-index: 1000;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 80"><path fill="%230066cc" d="M30,0C13.4,0,0,13.4,0,30s13.4,30,30,30s30-13.4,30-30S46.6,0,30,0z M32,46h-4v-4h4V46z M36,34c-1.1,1.1-2,2-2,4h-4c0-3.3,1.7-5,3-6c1.3-1,2-1.7,2-4c0-2.2-1.8-4-4-4s-4,1.8-4,4h-4c0-4.4,3.6-8,8-8s8,3.6,8,8C39,31.3,37.1,32.9,36,34z"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transform: translateY(100px);
+    pointer-events: none;
+}
+
+.hand-gesture.visible {
+    animation: hand-wave 3s cubic-bezier(.36,.07,.19,.97) infinite;
+    opacity: 0.7;
+}
+
+.hand-gesture.scrolling-down {
+    bottom: 20px;
+    transform: translateY(0) rotate(0deg);
+}
+
+.hand-gesture.scrolling-up {
+    top: 20px;
+    transform: translateY(0) rotate(180deg);
+}
+
+@keyframes hand-wave {
+    0% { transform: translateY(0) rotate(0deg); }
+    10% { transform: translateY(-10px) rotate(10deg); }
+    20% { transform: translateY(0) rotate(0deg); }
+    30% { transform: translateY(-10px) rotate(-10deg); }
+    40% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* Particle Effects */
+.particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Visitor counter styles */
+.visitor-counter {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 102, 204, 0.8);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.visitor-counter.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#visitor-count {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #ffffff;
+}

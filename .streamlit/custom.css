@@ -1,0 +1,43 @@
+[data-testid="stAppViewContainer"] {
+    background-image: url("../assets/background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Add some transparency to the white background */
+[data-testid="stVerticalBlock"] {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    margin: 20px;
+    padding: 20px;
+}
+
+/* Make the sidebar semi-transparent */
+[data-testid="stSidebar"] {
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+}
+
+/* Style sidebar text for better readability */
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] {
+    color: white;
+}
+
+[data-testid="stSidebar"] .st-emotion-cache-16txtl3 {
+    color: white;
+}
+
+/* Make charts and visualizations more visible */
+[data-testid="stHorizontalBlock"] {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* Style headings for better visibility */
+h1, h2, h3 {
+    text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.8);
+}
